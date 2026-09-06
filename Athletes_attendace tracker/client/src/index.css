@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: linear-gradient(135deg, #FFEB99 0%, #FFE680 100%);
+  color: #8B0000;
+}
+
+.dark body {
+  background: linear-gradient(135deg, #8B0000 0%, #660000 100%);
+  color: #FFD700;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.track-field {
+  background:
+    linear-gradient(135deg, rgba(139, 0, 0, 0.12), transparent 35%),
+    linear-gradient(315deg, rgba(255, 215, 0, 0.18), transparent 40%),
+    linear-gradient(to bottom, #FFEB99, #FFE680);
+  color: #8B0000;
+}
+
+.dark .track-field {
+  background:
+    linear-gradient(135deg, rgba(139, 0, 0, 0.2), transparent 35%),
+    linear-gradient(315deg, rgba(255, 237, 74, 0.15), transparent 40%),
+    linear-gradient(135deg, #8B0000 0%, #660000 100%);
+  color: #FFD700;
+}

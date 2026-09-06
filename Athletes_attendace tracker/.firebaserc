@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "attendencetracker-42c6d"
+  },
+  "targets": {
+    "attendencetracker-42c6d": {
+      "hosting": {
+        "immortalstracker": [
+          "immortalstracker"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

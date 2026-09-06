@@ -1,0 +1,61 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function signedInUserPath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function signedInUser() {
+      return get(signedInUserPath());
+    }
+
+    function role() {
+      return isSignedIn() && exists(signedInUserPath()) ? signedInUser().data.role : null;
+    }
+
+    function isCaptainOrAdmin() {
+      return role() in ["captain", "admin"];
+    }
+
+    // Users can manage their own profile. Signed-in users can read profiles
+    // because dashboards list athletes, captains, and alumni.
+    match /users/{userId} {
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow read: if isSignedIn();
+      allow update: if isSignedIn() && (request.auth.uid == userId || role() == "admin");
+      allow delete: if isSignedIn() && role() == "admin";
+    }
+
+    // Athletes can read attendance; captains and admins can mark it.
+    match /attendance/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if isCaptainOrAdmin();
+    }
+
+    // Captain/admin users mark coach attendance.
+    match /coachAttendance/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if isCaptainOrAdmin();
+    }
+
+    // Sports events are read by everyone in the app and managed by admins.
+    match /sports_events/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if role() == "admin";
+    }
+
+    match /events/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if role() == "admin";
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
