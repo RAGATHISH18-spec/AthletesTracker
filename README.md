@@ -38,13 +38,18 @@ A modern sports attendance and training management web application designed for 
 
 You can explore the complete application immediately without setting up Firebase credentials:
 
-### 1. Install dependencies
+### 1. Clone the repository
 ```bash
-cd client
+git clone https://github.com/RAGATHISH18-spec/AthletesTracker.git
+cd AthletesTracker/"Athletes_attendace tracker"/client
+```
+
+### 2. Install dependencies
+```bash
 npm install
 ```
 
-### 2. Start development server
+### 3. Start development server
 ```bash
 npm run dev
 ```
@@ -79,33 +84,34 @@ Use any of the following accounts with any password having **at least 6 characte
 ## 📂 Project Structure
 
 ```text
-Athletes_attendace tracker/
-├── client/                      # Frontend Single Page Application
-│   ├── public/                  # Static assets (logos, event banners)
-│   ├── src/
-│   │   ├── components/          # Reusable UI components
-│   │   │   ├── charts/          # Recharts attendance graphs
-│   │   │   ├── layout/          # AppLayout, Header, Sidebar, MobileNav
-│   │   │   └── ui/              # StatCards, StatusBadges, Buttons
-│   │   ├── context/             # AuthContext and ThemeContext
-│   │   ├── data/                # Mock data fixtures for Demo Mode
-│   │   ├── hooks/               # Custom data-fetching hooks (useTrackerData)
-│   │   ├── pages/               # Role-specific dashboard views & auth pages
-│   │   ├── services/            # FirebaseStore & DemoStore data abstraction
-│   │   ├── utils/               # Attendance calculation & CSV export utilities
-│   │   ├── App.jsx              # Application router and protected routes
-│   │   ├── firebase.js          # Firebase SDK initialization & offline config
-│   │   └── main.jsx             # React DOM entrypoint
-│   ├── index.html
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
-├── firebase/                    # Security configurations
-│   ├── firestore.rules          # Granular role-based Firestore rules
-│   └── firestore.indexes.json   # Composite index definitions
-├── firebase.json                # Firebase Hosting & deployment targets
-├── package.json                 # Top-level workspace script runner
-├── CAPTAIN_DASHBOARD_TESTING.md # QA test checklist and validation suite
+AthletesTracker/
+├── Athletes_attendace tracker/
+│   ├── client/                      # Frontend Single Page Application
+│   │   ├── public/                  # Static assets (logos, event banners)
+│   │   ├── src/
+│   │   │   ├── components/          # Reusable UI components
+│   │   │   │   ├── charts/          # Recharts attendance graphs
+│   │   │   │   ├── layout/          # AppLayout, Header, Sidebar, MobileNav
+│   │   │   │   └── ui/              # StatCards, StatusBadges, Buttons
+│   │   │   ├── context/             # AuthContext and ThemeContext
+│   │   │   ├── data/                # Mock data fixtures for Demo Mode
+│   │   │   ├── hooks/               # Custom data-fetching hooks (useTrackerData)
+│   │   │   ├── pages/               # Role-specific dashboard views & auth pages
+│   │   │   ├── services/            # FirebaseStore & DemoStore data abstraction
+│   │   │   ├── utils/               # Attendance calculation & CSV export utilities
+│   │   │   ├── App.jsx              # Application router and protected routes
+│   │   │   ├── firebase.js          # Firebase SDK initialization & offline config
+│   │   │   └── main.jsx             # React DOM entrypoint
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── tailwind.config.js
+│   │   └── vite.config.js
+│   ├── firebase/                    # Security configurations
+│   │   ├── firestore.rules          # Granular role-based Firestore rules
+│   │   └── firestore.indexes.json   # Composite index definitions
+│   ├── firebase.json                # Firebase Hosting & deployment targets
+│   ├── package.json                 # Top-level workspace script runner
+│   └── CAPTAIN_DASHBOARD_TESTING.md # QA test checklist and validation suite
 └── README.md
 ```
 
@@ -133,6 +139,7 @@ const firebaseConfig = {
 Ensure you have the [Firebase CLI](https://firebase.google.com/docs/cli) installed and logged in:
 
 ```bash
+cd "Athletes_attendace tracker"
 firebase deploy --only firestore:rules,firestore:indexes
 ```
 
